@@ -4,10 +4,9 @@ Processed blank-sky data from the XMM-Newton Space Telescope.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![arXiv](https://img.shields.io/badge/arXiv-21xx.xxxxx%20-green.svg)](https://arxiv.org/abs/21xx.xxxxx)
 
-https://github.com/bsafdi/XMM_BSO_DATA
 ![RingFlux](/data/XMM-Ring-Flux.png "XMM Newton Flux divided into 30 rings for the MOS and PN Cameras")
 
-Data collected by the [XMM-Newton](https://www.cosmos.esa.int/web/xmm-newton) X-ray space telescope divided into 30 concentric annuli around the Galactic Center, a dataset ideal for performing searches for dark matter decay originating from the Milky Way halo.
+Data collected by the [XMM-Newton](https://www.cosmos.esa.int/web/xmm-newton) X-ray space telescope divided into 30 concentric annuli around the Galactic Center, a dataset ideal for performing searches for dark matter decay originating from the Milky Way halo. The above figures show the total flux in [photons/s/keV/sr] in each ring separately,for both MOS and PN camereas over the energy ranges specified.
 
 If this data is used in published work, please cite [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx).
 
@@ -21,3 +20,28 @@ If this data is used in published work, please cite [21xx.xxxxx](https://arxiv.o
 - Benjamin Safdi
 
 ## Data
+
+A detailed description of the data provided here can be found in [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx). In short, we take all data collected by XMM-Newton from its launch until 5 September 2018. We then remove any observation with a greater than median flux [photons/s/keV] over 2-10 keV (determined separately for MOS and PN), with a total exposure less than 500 ks, or that falls within 2 degrees of the Galactic Plane. The suriving observations are then combined into 30 rings, each of width 6 degrees as measured in angular distance from the Galactic Center.
+
+The data can be found in the `data` directory, and is stored using the [h5py](https://www.h5py.org/) format. There are two files, `XMM-BSO-dataset-MOS.hdf5` and `XMM-BSO-dataset-PN.hdf5`, which store the MOS and PN data, respectively. Within each file there are 30 rings, accessed with keys `ring_[1-30]`. Within each ring, the following data is provided:
+- `cts`: the observed (integer) counts in each output bin;
+- `exp`: the total exposure in [s] for this ring;
+- `wht`: the appropriate weight of this ring in [s.sr], used for combining rings if necessary;
+- `Dfc_fid`: our fiducial D-factor in [keV/cm^2];
+- `Dfc_NFW`: the D-factor in [keV/cm^2] for a pure the best fit NFW profile;
+- `Dfc_cDM`: the D-factor in [keV/cm^2] for a contracted dark matter halo.
+
+The D-factors are all based on data taken from [Cautun et al 2020](https://academic.oup.com/mnras/article-abstract/494/3/4291/5821286?redirectedFrom=fulltext), and additional detail is provided in our paper.
+
+In addition, the data files contain the information regarding the energy associated with each bin, which applies for all rings. These can be accessed by key `emin_o` and `emax_o`, which give the energy in [keV] of the lower and upper edge of each output bin, which is what the `cts` data above is specified in. In addition, we provide `emin_i` and `emax_i` which is the analogous product for the input energy bins. These are only required when using the instrument response files. These are separately provided [here](...), as they are considerably larger. There, the instrument response is provided in the same ring-by-ring format as above, with key `dtr` in [cm^2].
+
+
+As a minimal example, the counts in ring 5 for the MOS camera can be loaded as follows
+
+```
+import h5py
+
+ms = h5py.File('./data/XMM-BSO-dataset-MOS.hdf5', 'r')
+r5 = ms['ring_5']
+cts5 = r5['cts']
+```
