@@ -53,3 +53,19 @@ from scipy import sparse
 
 pncts = sparse.load_npz('./data/xmm-ring-full/pn_cts_ring18.npz')
 ```
+
+## Supplementary Data for [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx)
+
+In `SuppData/Fiducial_Exposures_Deep_Search.csv` we provide the full list of 29,578 exposures used in the
+fiducial analysis of [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx). For each exposure, the following
+information is
+provided:
+
+1. `Observation ID`: the 10 digit identifier for this observation.
+2. `Camera`: the camera this exposure was collected with: MOS1, MOS2, or PN.
+3. `Exposure Identifier`: the unique identifier for this exposure given the camera and observation ID.
+4. `Exposure Time`: the length of this exposure [ks].
+5. `l`: the location of this exposure in galactic longitude [deg].
+6. `b`: the location of this exposure in galactic latitude [deg].
+7. `Target`: name of the intended observation target.
+8. `Target Type`: the intended type of the target.
