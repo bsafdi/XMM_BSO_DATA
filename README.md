@@ -12,9 +12,9 @@ If this data is used in published work, please cite [21xx.xxxxx](https://arxiv.o
 
 ## Authors
 
-- Marius Kongsøre
 - Christopher Dessert
 - Joshua Foster
+- Marius Kongsøre
 - Yujin Park
 - Nicholas Rodd
 - Benjamin Safdi
@@ -44,4 +44,12 @@ import h5py
 ms = h5py.File('./data/XMM-BSO-dataset-MOS.hdf5', 'r')
 r5 = ms['ring_5']
 cts5 = r5['cts']
+```
+
+In addition, we provide the counts, exposure, and weight files in [healpix](https://healpix.jpl.nasa.gov/) format, which can be used directly or for construction an alternative binning. These files are contained in `xmm-ring-full.tar.gz` found within the `data` directory. The format for the files is similar to the above, but each array is associated with an `nside=512` healpix index. The files are stored as [sparse matrices](https://docs.scipy.org/doc/scipy/reference/sparse.html), and an example of how the counts for the PN camera in the 18th ring can be loaded using the syntax below (after unpacking the directory),
+
+```
+from scipy import sparse
+
+pncts = sparse.load_npz('./data/xmm-ring-full/pn_cts_ring18.npz')
 ```
