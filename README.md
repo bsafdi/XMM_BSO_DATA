@@ -56,7 +56,7 @@ pncts = sparse.load_npz('./data/xmm-ring-full/pn_cts_ring18.npz')
 
 ## Supplementary Data for [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx)
 
-In `SuppData/Fiducial_Exposures_Deep_Search.csv` we provide the full list of 29,578 exposures used in the
+In `SuppData/Fiducial_Exposures_Pre_Cuts.csv` we provide the full list of 29,578 exposures used in the
 fiducial analysis of [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx). For each exposure, the following
 information is
 provided:
@@ -69,3 +69,7 @@ provided:
 6. `b`: the location of this exposure in galactic latitude [deg].
 7. `Target`: name of the intended observation target.
 8. `Target Type`: the intended type of the target.
+
+In `SuppData/Fiducial_Exposures_Post_Cuts.csv`, we provide the full list of the 13,787 exposures that passed the 
+quality cuts detailed in [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx). We additionally 
+provide the `Ring Number`, the ring to which that exposure belongs.
