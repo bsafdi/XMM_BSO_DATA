@@ -33,7 +33,7 @@ The data can be found in the `data` directory, and is stored using the [h5py](ht
 
 The D-factors are all based on data taken from [Cautun et al 2020](https://academic.oup.com/mnras/article-abstract/494/3/4291/5821286?redirectedFrom=fulltext), and additional detail is provided in our paper.
 
-In addition, the data files contain the information regarding the energy associated with each bin, which applies for all rings. These can be accessed by key `emin_o` and `emax_o`, which give the energy in [keV] of the lower and upper edge of each output bin, which is what the `cts` data above is specified in. In addition, we provide `emin_i` and `emax_i` which is the analogous product for the input energy bins. These are only required when using the instrument response files. These are separately provided [here](...), as they are considerably larger. There, the instrument response is provided in the same ring-by-ring format as above, with key `dtr` in [cm^2].
+In addition, the data files contain the information regarding the energy associated with each bin, which applies for all rings. These can be accessed by key `emin_o` and `emax_o`, which give the energy in [keV] of the lower and upper edge of each output bin, which is what the `cts` data above is specified in. In addition, we provide `emin_i` and `emax_i` which is the analogous product for the input energy bins. These are only required when using the instrument response files. These are separately provided [here](https://zenodo.org/record/4498564#.YBrb3OhKj_U), as they are considerably larger. There, the instrument response is provided in the same ring-by-ring format as above, with key `dtr` in [cm^2].
 
 
 As a minimal example, the counts in ring 5 for the MOS camera can be loaded as follows
