@@ -2,33 +2,34 @@
 Processed blank-sky data from the XMM-Newton Space Telescope.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![arXiv](https://img.shields.io/badge/arXiv-21xx.xxxxx%20-green.svg)](https://arxiv.org/abs/21xx.xxxxx)
+[![arXiv](https://img.shields.io/badge/arXiv-2102.02207%20-green.svg)](https://arxiv.org/abs/2102.02207)
 
 ![RingFlux](/data/XMM-Ring-Flux.png "XMM Newton Flux divided into 30 rings for the MOS and PN Cameras")
 
-Data collected by the [XMM-Newton](https://www.cosmos.esa.int/web/xmm-newton) X-ray space telescope divided into 30 concentric annuli around the Galactic Center, a dataset ideal for performing searches for dark matter decay originating from the Milky Way halo. The above figures show the total flux in [photons/s/keV/sr] in each ring separately,for both MOS and PN camereas over the energy ranges specified.
+Data collected by the [XMM-Newton](https://www.cosmos.esa.int/web/xmm-newton) X-ray space telescope divided into 30 concentric annuli around the Galactic Center, a dataset ideal for performing searches for dark matter decay originating from the Milky Way halo. The above figures show the total flux in [photons/s/keV/sr] in each ring separately,for both MOS and PN cameras over the energy ranges specified.
 
-If this data is used in published work, please cite [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx).
+If this data is used in published work, please cite [2102.02207](https://arxiv.org/abs/2102.02207).
 
 ## Authors
 
-- Christopher Dessert
 - Joshua Foster
-- Marius Kongsøre
+- Marius Kongsore
+- Christopher Dessert
 - Yujin Park
 - Nicholas Rodd
+- Kyle Cranmer
 - Benjamin Safdi
 
 ## Data
 
-A detailed description of the data provided here can be found in [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx). In short, we take all data collected by XMM-Newton from its launch until 5 September 2018. We then remove any observation with a greater than median flux [photons/s/keV] over 2-10 keV (determined separately for MOS and PN), with a total exposure less than 500 ks, or that falls within 2 degrees of the Galactic Plane. The suriving observations are then combined into 30 rings, each of width 6 degrees as measured in angular distance from the Galactic Center.
+A detailed description of the data provided here can be found in [2102.02207](https://arxiv.org/abs/2102.02207). In short, we take all data collected by XMM-Newton from its launch until 5 September 2018. We then remove any observation with a greater than median flux [photons/s/keV] over 2-10 keV (determined separately for MOS and PN), with a total exposure less than 500 ks, or that falls within 2 degrees of the Galactic Plane. The surviving observations are then combined into 30 rings, each of width 6 degrees as measured in angular distance from the Galactic Center.
 
 The data can be found in the `data` directory, and is stored using the [h5py](https://www.h5py.org/) format. There are two files, `XMM-BSO-dataset-MOS.hdf5` and `XMM-BSO-dataset-PN.hdf5`, which store the MOS and PN data, respectively. Within each file there are 30 rings, accessed with keys `ring_[1-30]`. Within each ring, the following data is provided:
 - `cts`: the observed (integer) counts in each output bin;
 - `exp`: the total exposure in [s] for this ring;
 - `wht`: the appropriate weight of this ring in [s.sr], used for combining rings if necessary;
 - `Dfc_fid`: our fiducial D-factor in [keV/cm^2];
-- `Dfc_NFW`: the D-factor in [keV/cm^2] for a pure the best fit NFW profile;
+- `Dfc_NFW`: the D-factor in [keV/cm^2] for our fiducial NFW profile;
 - `Dfc_cDM`: the D-factor in [keV/cm^2] for a contracted dark matter halo.
 
 The D-factors are all based on data taken from [Cautun et al 2020](https://academic.oup.com/mnras/article-abstract/494/3/4291/5821286?redirectedFrom=fulltext), and additional detail is provided in our paper.
@@ -54,10 +55,10 @@ from scipy import sparse
 pncts = sparse.load_npz('./data/xmm-ring-full/pn_cts_ring18.npz')
 ```
 
-## Supplementary Data for [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx)
+## Supplementary Data for [2102.02207](https://arxiv.org/abs/2102.02207)
 
 In `SuppData/Fiducial_Exposures_Pre_Cuts.csv` we provide the full list of 29,578 exposures used in the
-fiducial analysis of [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx). For each exposure, the following
+fiducial analysis of [2102.02207](https://arxiv.org/abs/2102.02207). For each exposure, the following
 information is
 provided:
 
@@ -71,5 +72,5 @@ provided:
 8. `Target Type`: the intended type of the target.
 
 In `SuppData/Fiducial_Exposures_Post_Cuts.csv`, we provide the full list of the 13,787 exposures that passed the 
-quality cuts detailed in [21xx.xxxxx](https://arxiv.org/abs/21xx.xxxxx). We additionally 
+quality cuts detailed in [2102.02207](https://arxiv.org/abs/21xx.xxxxx). We additionally 
 provide the `Ring Number`, the ring to which that exposure belongs.
