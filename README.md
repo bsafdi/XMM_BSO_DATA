@@ -22,7 +22,7 @@ If this data is used in published work, please cite [2102.02207](https://arxiv.o
 
 ## Data
 
-A detailed description of the data provided here can be found in [2102.02207](https://arxiv.org/abs/2102.02207). In short, we take all data collected by XMM-Newton from its launch until 5 September 2018. We then remove any observation with a greater than median flux [photons/s/keV] over 2-10 keV (determined separately for MOS and PN), with a total exposure less than 500 ks, or that falls within 2 degrees of the Galactic Plane. The surviving observations are then combined into 30 rings, each of width 6 degrees as measured in angular distance from the Galactic Center.
+A detailed description of the data provided here can be found in [2102.02207](https://arxiv.org/abs/2102.02207). In short, we take all data collected by XMM-Newton from its launch until 5 September 2018. We then remove any observation with a greater than median flux [photons/s/keV] over 2-10 keV (determined separately for MOS and PN), with a total exposure less than 500 s, or that falls within 2 degrees of the Galactic Plane. The surviving observations are then combined into 30 rings, each of width 6 degrees as measured in angular distance from the Galactic Center.
 
 The data can be found in the `data` directory, and is stored using the [h5py](https://www.h5py.org/) format. There are two files, `XMM-BSO-dataset-MOS.hdf5` and `XMM-BSO-dataset-PN.hdf5`, which store the MOS and PN data, respectively. Within each file there are 30 rings, accessed with keys `ring_[1-30]`. Within each ring, the following data is provided:
 - `cts`: the observed (integer) counts in each output bin;
